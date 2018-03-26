@@ -1,0 +1,33 @@
+
+<h1>hello world</h1>
+
+<p> user count: {{course.user_count}}</p>
+
+{% set result = course.user_count%}
+<p> 测试{{result}}</p>
+
+{% for tag in course.tags %}
+    <p> {{tag}} </p>
+{% endfor %}
+
+<p>lsls : {{course.not_exit}}</p>
+
+{% macro course_item(course,type="bootstrap")%}
+    <div>
+        <p>type:{{type}}</p>
+        <p>name:{{course.name}}</p>
+    </div>
+{% endmacro %}
+<div> {{course_item(course)}}</div>
+<p>{{'='*30}}</p>
+<div> {{course_item(course,type="lolololo")}}</div>
+
+{% extends "base.html" %}
+{% block header %}
+    <h1> header </h1>
+{% endblock %}
+     
+{% block content %}
+    <p>{{course.teacher.email | hidden_email}}</p>
+{% endblock%}
+
